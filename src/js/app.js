@@ -10,7 +10,8 @@ import './config/app.templates';
 // Import our app functionaity
 import './layout';
 import './components';
-import './home';
+import './auth';
+;import './home';
 import './profile';
 import './article';
 import './services';
@@ -22,6 +23,7 @@ const requires = [
   'templates',
   'app.layout',
   'app.components',
+  'app.auth',
   'app.home',
   'app.profile',
   'app.article',
