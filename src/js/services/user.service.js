@@ -33,6 +33,20 @@ export default class User {
         this._$state.go(this._$state.$current, null, {reload: true});
     }
 
+     // Update the current user's name, email, password, etc
+    update(fields) {
+        return this._$http({
+            url: this._AppConstants.api + '/user',
+            method: 'PUT',
+            data: { user: fields }
+        }).then(
+            (res) => {
+                this.current = res.data.user;
+                return res.data.user;
+            }
+        );
+    }
+
     verifyAuth() {
         let deferred = this._$q.defer();
 
