@@ -1,12 +1,12 @@
-export default class User{
+export default class User {
     constructor(JWT, AppConstants, $http, $state, $q) {
         'ngInject';
         this._JWT = JWT;
         this._AppConstants = AppConstants;
         this._$http = $http;
         this._$state = $state;
-        this.current = null;
         this._$q = $q;
+        this.current = null;
     }
 
     attemptAuth(type, credentials) {
@@ -19,7 +19,6 @@ export default class User{
             }
         }).then(
             (res) => {
-                console.log(res);
                 debugger;
                 this._JWT.save(res.data.user.token);
                 this.current = res.data.user;
@@ -46,7 +45,7 @@ export default class User{
             deferred.resolve(true);
         } else {
             this._$http({
-                url: this_AppConstants.api + '/user',
+                url: this._AppConstants.api + '/user',
                 method: 'GET',
                 headers: {
                     Authorization: 'Token ' + this._JWT.get()
@@ -61,8 +60,8 @@ export default class User{
                     deferred.resolve(false);
                 }
             );
-            return deferred.promise;
         }
+        return deferred.promise;
     }
 
     ensureAuthIs(bool) {
@@ -76,7 +75,7 @@ export default class User{
       } else {
         deferred.resolve(true);
       }
-    })
+    });
 
     return deferred.promise;
   }
